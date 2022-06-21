@@ -9,6 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var imagesArray: [UIImage?] = [
+        UIImage(named: "pato"),
+        UIImage(named: "tigre"),
+        UIImage(named: "gaviao"),
+        UIImage(named: "borboleta"),
+        UIImage(named: "joaninha"),
+    ]
+    var sequencesNumber = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemCyan
@@ -36,25 +45,11 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.6, animations: {
             self.image.alpha = 1
             
-            let imagesArray: [UIImage?] = [
-                UIImage(named: "pato"),
-                UIImage(named: "tigre"),
-                UIImage(named: "gaviao"),
-            ]
-            
-            var myImages: UIImage?
-            var numeroSequencial = 0
-    
-//            for x in 0...2 {
-//                self.image.image = self.imagesArray[x]
-//            }
-            
-            if numeroSequencial == imagesArray.count {
-                numeroSequencial = 0
+            if self.sequencesNumber == self.imagesArray.count {
+                self.sequencesNumber = 0
             }
-            
-            myImages = imagesArray[numeroSequencial]
-            numeroSequencial += 1
+            self.image.image = self.imagesArray[self.sequencesNumber]
+            self.sequencesNumber += 1
             
         }, completion: {
             (completed: Bool) -> Void in
