@@ -38,11 +38,14 @@ class ViewController: UIViewController {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false
         img.contentMode = .scaleAspectFill
+        img.layer.cornerRadius = 100 / 2
+        img.layer.masksToBounds = true
+        img.contentMode = .scaleAspectFill
         return img
     }()
     
     func fadeInOut() {
-        UIView.animate(withDuration: 0.6, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.image.alpha = 1
             
             if self.sequencesNumber == self.imagesArray.count {
@@ -53,7 +56,7 @@ class ViewController: UIViewController {
             
         }, completion: {
             (completed: Bool) -> Void in
-            UIView.animate(withDuration: 0.6, delay: 0.6, options: UIView.AnimationOptions.curveLinear,
+            UIView.animate(withDuration: 0.5, delay: 0.5, options: UIView.AnimationOptions.curveLinear,
                            animations: {
                 self.image.alpha = 0
             }, completion: {
